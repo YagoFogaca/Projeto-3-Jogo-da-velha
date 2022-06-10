@@ -17,17 +17,16 @@ let tabuleiro = [
 // 1 | 4 | 7
 // 1 | 5 | 9
 const nomes = () => {
-    let player1 = prompt('Qual o nome do jogador 1: ');
+    let player1 = prompt('Qual o nome do jogador(a) 1: ');
     console.log();
-    let player2 = prompt('Qual o nome do jogador 2: ');
+    let player2 = prompt('Qual o nome do jogador(a) 2: ');
     console.log();
-    console.log(`O jogador ${player1} joga com X`);
+    console.log(`O jogador(a) ${player1} joga com X`);
     console.log();
-    console.log(`O jogador ${player2} joga com O`);
+    console.log(`O jogador(a) ${player2} joga com O`);
     let players = [player1, player2];
     return players;
 };
-
 const jogadas = (nomes, tabuleiro) => {
     let escolhas = [];
     console.log(`Vamos começar a jogar. Estão preparados ${nomes} ?`);
@@ -47,7 +46,11 @@ const jogadas = (nomes, tabuleiro) => {
                 jogadaPlayer1 != 8 &&
                 jogadaPlayer1 != 9)
         ) {
-            console.log('Essa posição já foi prenchida...');
+            if(escolhas.indexOf(jogadaPlayer1) != -1){
+                console.log('Essa posição já foi prenchida...');
+            } else {
+                console.log('Essa posição é invalida');
+            }
             jogadaPlayer1 = +prompt(`${nomes[0]} onde deseja jogar? `);
         }
         escolhas.push(jogadaPlayer1);
@@ -81,7 +84,7 @@ const jogadas = (nomes, tabuleiro) => {
         }
         if (escolhas.length == 9) {
             break jogo;
-        }
+        } // Trocar esse controle para o while
         let jogadaPlayer2 = +prompt(`${nomes[1]} onde deseja jogar? `);
         while (
             escolhas.indexOf(jogadaPlayer2) != -1 ||
@@ -95,7 +98,11 @@ const jogadas = (nomes, tabuleiro) => {
                 jogadaPlayer2 != 8 &&
                 jogadaPlayer2 != 9)
         ) {
-            console.log('Essa posição já foi prenchida...');
+            if(escolhas.indexOf(jogadaPlayer2) != -1){
+                console.log('Essa posição já foi prenchida...');
+            } else {
+                console.log('Essa posição é invalida');
+            }
             jogadaPlayer2 = +prompt(`${nomes[1]} onde deseja jogar? `);
         }
         escolhas.push(jogadaPlayer2);
